@@ -25,7 +25,10 @@ module.exports = function(grunt) {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             ignore: ['node_modules'],
-            registry: null
+            registry: null,
+            username: null,
+            password: null,
+            email: null
         });
 
         /**
