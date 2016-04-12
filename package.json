@@ -1,45 +1,92 @@
 {
-  "name": "grunt-publish",
-  "description": "Automatically publish to NPM registry one or more modules",
-  "version": "0.0.3",
-  "homepage": "https://github.com/maxleiko/grunt-publish",
-  "author": {
-    "name": "Maxime Tricoire",
-    "email": "max.tricoire@gmail.com"
+  "_args": [
+    [
+      "grunt-publish",
+      "C:\\Dev\\Emirates\\ek-web-poc-phase2\\src\\ek-grunt-tasks"
+    ]
+  ],
+  "_from": "grunt-publish@latest",
+  "_id": "grunt-publish@0.0.5",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/grunt-publish",
+  "_npmUser": {
+    "email": "max.tricoire@gmail.com",
+    "name": "leiko"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/maxleiko/grunt-publish.git"
+  "_npmVersion": "2.15.2",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "grunt-publish",
+    "raw": "grunt-publish",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/grunt-publish/-/grunt-publish-0.0.5.tgz",
+  "_shasum": "2b626ccf93c0258e3cb5453f4cfe7d4ffb94a2e5",
+  "_shrinkwrap": null,
+  "_spec": "grunt-publish",
+  "_where": "C:\\Dev\\Emirates\\ek-web-poc-phase2\\src\\ek-grunt-tasks",
+  "author": {
+    "email": "max.tricoire@gmail.com",
+    "name": "Maxime Tricoire"
   },
   "bugs": {
     "url": "https://github.com/maxleiko/grunt-publish/issues"
   },
+  "dependencies": {
+    "async": "^0.2.10",
+    "npm": "^2.15.2"
+      },
+  "description": "Automatically publish to NPM registry one or more modules",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "2b626ccf93c0258e3cb5453f4cfe7d4ffb94a2e5",
+    "tarball": "https://registry.npmjs.org/grunt-publish/-/grunt-publish-0.0.5.tgz"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "gitHead": "9192b8d3e31e52f71aac9ce7b7ca319291460acc",
+  "homepage": "https://github.com/maxleiko/grunt-publish",
+  "keywords": [
+    "gruntplugin"
+  ],
   "licenses": [
     {
       "type": "MIT",
       "url": "https://github.com/maxleiko/grunt-publish/blob/master/LICENSE-MIT"
     }
   ],
-  "engines": {
-    "node": ">= 0.8.0"
+  "maintainers": [
+    {
+      "name": "leiko",
+      "email": "max.tricoire@gmail.com"
+    }
+  ],
+  "name": "grunt-publish",
+  "optionalDependencies": {},
+  "peerDependencies": {
+    "grunt": "~0.4.2"
+  },
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxleiko/grunt-publish.git"
   },
   "scripts": {
     "test": "grunt test"
   },
-  "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.2"
-  },
-  "peerDependencies": {
-    "grunt": "~0.4.2"
-  },
-  "keywords": [
-    "gruntplugin"
-  ],
-  "dependencies": {
-    "async": "^0.2.10",
-    "npm": "^1.4.4"
-  }
+  "version": "0.0.5"
 }

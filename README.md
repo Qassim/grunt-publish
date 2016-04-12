@@ -82,6 +82,48 @@ publish: {
 
 Will publish your module to the specified registry instead of registry.npmjs.org. If `options.registry` isn't specified, `https://registry.npmjs.org` is used.
 
+#### options.installBefore
+Type: `boolean`
+Default value: `false`
+
+Will install module dependencies if set to true. Otherwise, it will only publish the module.
+For example:
+```js
+publish: {
+    main: {
+        options: {
+            installBefore: true
+        },
+        src: [
+            'test/fixtures/aFolder/another-module',
+            'test/fixtures/fake-module'
+        ]
+    }
+},
+```
+
+#### options.forceInstall
+Type: `boolean`
+Default value: `false`
+
+Will force module dependencies reinstallation if set to true.
+This option is useless if `installBefore` is set to false.
+For example:
+```js
+publish: {
+    main: {
+        options: {
+            installBefore: true,
+            forceInstall: true // will remove node_modules and reinstall all the dependencies
+        },
+        src: [
+            'test/fixtures/aFolder/another-module',
+            'test/fixtures/fake-module'
+        ]
+    }
+},
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 

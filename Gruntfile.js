@@ -31,6 +31,10 @@ module.exports = function(grunt) {
         // Configuration to be run (and then tested).
         publish: {
             main: {
+                options: {
+                    installBefore: true,
+                    forceInstall: true
+                },
                 src: [
                     'test/fixtures/aFolder/another-module',
                     'test/fixtures/fake-module'

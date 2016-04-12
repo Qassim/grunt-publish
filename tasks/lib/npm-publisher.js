@@ -10,29 +10,12 @@ module.exports = function(filepath, options, callback) {
         callback = options;
         options = {};
     }
-
+    console.log(options.registry);
     // load npm
-    npm.load({ loglevel: 'silent' }, function(err) {
+    npm.load(null, function(err) {
         if (err) {
             return callback(err);
         }
-
-        if (options.registry) {
-            npm.config.set('registry', options.registry);
-        }
-
-        if (options.username) {
-            npm.config.set('username', options.username);
-        }
-
-        if (options.password) {
-            npm.config.set('password', options.password);
-        }
-
-        if (options.email) {
-            npm.config.set('email', options.email);
-        }
-
         var auth = {
             username: options.username,
             password: options.password,
@@ -44,14 +27,19 @@ module.exports = function(filepath, options, callback) {
         };
 
         npm.registry.adduser(options.registry, addUserParams, function(addUserError, data, raw, res) {
+
             if (addUserError) {
                 return callback(addUserError);
+
             }
             var metadata = require(path.join(filepath, 'package.json'));
+
             npm.commands.pack([], function(packError) {
+
                 if (packError) {
                     return callback(packError);
                 }
+
                 var fileName = metadata.name + '-' + metadata.version + '.tgz';
                 var bodyPath = require.resolve(path.join(filepath, fileName));
                 var body = fs.createReadStream(bodyPath);
@@ -61,17 +49,15 @@ module.exports = function(filepath, options, callback) {
                     body: body,
                     auth: auth
                 };
-
                 npm.registry.publish(options.registry, publishParams, function(publishError, resp) {
+
                     if (publishError) {
                         return callback(publishError);
                     }
                     console.log("Publish succesful: " + JSON.stringify(resp));
                     return callback();
                 });
-
             });
         });
-
     });
 };

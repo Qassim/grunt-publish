@@ -7,19 +7,18 @@
  */
 
 'use strict';
-var path            = require('path'),
-    async           = require('async'),
-    npmPublisher    = require('./lib/npm-publisher');
+var path = require('path'),
+    async = require('async'),
+    npmPublisher = require('./lib/npm-publisher');
 
 module.exports = function(grunt) {
-
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
     grunt.registerMultiTask('publish', 'Automatically publish to NPM registry one or more modules', function() {
-        var done    = this.async(),
-            tasks   = [],
-            errors  = [],
+        var done = this.async(),
+            tasks = [],
+            errors = [],
             success = [];
 
         // Merge task-specific and/or target-specific options with these defaults.
@@ -28,7 +27,9 @@ module.exports = function(grunt) {
             registry: null,
             username: null,
             password: null,
-            email: null
+            email: null,
+            installBefore: false,
+            forceInstall: false
         });
 
         /**
@@ -56,16 +57,15 @@ module.exports = function(grunt) {
             }
             return false;
         }
-
         // Iterate over all specified file groups.
         this.files.forEach(function(f) {
-            f.src.forEach(function (filepath) {
+            f.src.forEach(function(filepath) {
                 var ignored = getIgnored(filepath);
                 if (!ignored && isValidDir(filepath)) {
                     var moduleName = grunt.file.readJSON(path.resolve(filepath, 'package.json')).name;
                     grunt.log.ok('Publishing ' + moduleName + ' (' + filepath + ') ...');
-                    tasks.push(function (cb) {
-                        npmPublisher(filepath, options, function (err) {
+                    tasks.push(function(cb) {
+                        npmPublisher(filepath, options, function(err) {
                             if (err) {
                                 grunt.log.error('Unable to publish ' + moduleName + ' (' + err.message.split('\n')[0] + ')');
                                 errors.push(moduleName + ' (' + err.message.split('\n')[0] + ')');
@@ -80,7 +80,7 @@ module.exports = function(grunt) {
             });
         });
 
-        async.parallel(tasks, function () {
+        async.parallel(tasks, function() {
             var i;
             if (success.length > 0) {
                 grunt.log.subhead('Successfully published:');
